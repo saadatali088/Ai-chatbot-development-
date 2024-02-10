@@ -1,0 +1,56 @@
+/* all css rules */
+/* https://www.w3schools.com/cssref/index.php */
+
+/* name selector */
+h1 {
+    color: red;
+    background-color: yellowgreen;
+    margin-top: 0px;
+}
+
+ /* h2 { */
+    color: black;
+    background-color: yellowgreen;
+}
+
+/* id selector*/
+
+/* #firstpara{color: red; */
+background-color: green;
+}
+
+/* #edu { */
+    color: aqua;
+}
+
+/* class selector */
+.imp {
+    color: aqua;
+}
+
+
+.profilephoto {
+    border: 2px solid black;
+    border-radius: 50%;
+    box-shadow: 5px 10px 10px gray;
+    margin: 10px;
+    margin-top: 0px;
+
+}
+
+body {
+    background-color: grey;
+}
+
+.center {
+    text-align: center;
+}
+
+.sectionone {
+    background-color: lightskyblue;
+    
+}
+
+/* .sectiontwo { */
+    background-color: brown;
+}     
