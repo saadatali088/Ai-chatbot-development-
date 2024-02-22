@@ -17,7 +17,19 @@
     </form>
     <h1 id="result"></h1>
 
-      
+      <br>
+
+    <form onsubmit="dodiff(); return false">
+    Num1: <input type="number" id="no1">
+    <br>
+    Num2: <input type="number" id="no2">
+    <br>
+    <button type="submit">Do diff</button>
+
+    
+    </form>
+    <h1 id="rusult"></h1>
+
     <script>
       function dosum() {
           console.log("I am dosum function running");
@@ -33,10 +45,22 @@
 
            document.getElementById("result").innerHTML = sumResult
 
-
-
-
           }
+        function dodiff() {
+
+          console.log("I am dodiff function running");
+
+          let no1 = document.getElementById("no1").value;
+          let no2 = document.getElementById("no2").value;
+
+          no1 = Number(no1);
+          no2 = Number(no2);
+
+          let diffResult = no1 - no2;
+           console.log("diffResult is:" ,diffResult);
+
+           document.getElementById("rusult").innerHTML = diffResult
+        }
     </script>
     
 </body>

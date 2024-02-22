@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ATM Machine</title>
+</head>
+<body>
+    <h1>ES6 Condition Checking with if else</h1>
+    <form onsubmit="checkPin(); return false;">
+        <h3>ATM Machine</h3>
+        Enter your PIN: <input type="number" id="userInputPin" required>
+        <button>Confirm</button>
+    </form>
+    <h4 id="errorMessage"></h4>
+    <div id="homeScreen"></div>
+    <h4 id="withdrawResult"></h4>
+    <script>
+        let moneybox = 22000
+        let cardDailyLimit = 20000;
+        let accountBalance = 50000;
+
+        function checkPin() {
+            console.log("Checking PIN...");
+
+            let userInputPin = document.querySelector("#userInputPin").value;
+
+            if (userInputPin.length !== 4) {
+                document.querySelector("#errorMessage").innerHTML = 'You must enter a four-digit code';
+                return;
+            }
+
+            if (userInputPin === "1223") {
+                document.querySelector("#errorMessage").innerHTML = 'Correct PIN';
+                
+                let homeScreen = document.getElementById("homeScreen");
+                homeScreen.innerHTML = `
+                    <form onsubmit="withdraw(); return false;">
+                        Enter amount to withdraw: <input type="number" id="withdrawAmount" required>
+                        <button>Withdraw</button>
+                    </form>`;
+
+                
+            } else {
+                document.querySelector("#errorMessage").innerHTML = 'Incorrect PIN';
+            }
+        }
+
+
+
+        function withdraw() {
+            let amount = document.querySelector("#withdrawAmount").value;
+            
+            let withdrawResult = document.getElementById("withdrawResult");
+            
+            
+            if (isNaN(amount) || amount <= 0) {
+                 console.log(" please enter a valid ammount")
+                 withdrawResult.innerHTML = "please enter a valid ammount "
+               return;  
+            }
+
+            if (amount % 500 !== 0) {
+                console.log("Wuithdrawal amont must be a multiple of 500");
+                withdrawResult.innerHTML = "Wuithdrawal amont must be a multiple of 500  "
+                return;
+            }
+
+            if (amount > moneybox) {
+                console.log("Machine does not have sufficient cash");
+                withdrawResult.innerHTML ="Machine does not have sufficient cash"
+            } else if (amount > cardDailyLimit) {
+                console.log("Exceeds daily withdrawal limit");
+                withdrawResult.innerHTML ="Exceeds daily withdrawal limit"
+            } else if (amount > accountBalance) {
+                console.log("Insufficient balance");
+                withdrawResult.innerHTML= "Insufficient balance"
+            } else {
+                // Withdrawal successful
+                console.log("Withdrawal successful");
+                moneybox -= amount;
+                accountBalance -= amount;
+                console.log("Moneybox: " + moneybox + ", Account Balance: " + accountBalance);
+                withdrawResult.innerHTML= "Withdrawal successful"
+              withdrawResult.innerHTML= "Moneybox: " + moneybox + ", Account Balance: " + accountBalance
+              "cardDailyLimit:" + cardDailyLimit
+            }
+        }
+        
+    </script>
+</body>
+</html>
